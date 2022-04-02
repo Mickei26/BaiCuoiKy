@@ -267,10 +267,10 @@
         // $("#document").ready(function () {
         var format = 'image/png';
         var map;
-        var minX = 102.152183532715;
-        var minY = 8.56899166107178;
-        var maxX = 109.457832336426;
-        var maxY = 23.1686458587646;
+        var minX = 102.15218353271484;
+        var minY = 8.568991661071777;
+        var maxX = 109.45783233642578;
+        var maxY = 23.16864585876465;
         var cenX = (minX + maxX) / 2;
         var cenY = (minY + maxY) / 2;
         var mapLat = cenY;
@@ -328,7 +328,7 @@
                 //layers: [layerCMR_adm1],
                 view: viewMap
             });
-            // map.getView().fit(bounds, map.getSize());
+            //map.getView().fit(bounds, map.getSize());
 
             //popup 
             closer.onclick = function() {
