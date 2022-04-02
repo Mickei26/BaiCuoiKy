@@ -322,7 +322,7 @@
                 target: "map",
                 overlays: [overlay],
                 // layer nền và layer bài làm
-                layers: [layerBG, layerGadm40_vnm_2],
+                layers: [layerBG, layerCMR_adm1],
                 // layers: [layerBG, layerGadm40_vnm_2],
                 // layers: [layerBG],
                 view: viewMap
