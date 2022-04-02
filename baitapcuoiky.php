@@ -313,7 +313,7 @@
                     duration: 250
                 }
             });
-            // ham view map
+            // hàm viewmap 
             var viewMap = new ol.View({
                 center: ol.proj.fromLonLat([mapLng, mapLat]),
                 zoom: mapDefaultZoom
