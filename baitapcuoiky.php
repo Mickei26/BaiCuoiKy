@@ -9,13 +9,10 @@
     <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css" />
     <script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript"></script>
 
-    <!-- <link rel="stylesheet" href="http://localhost:8080/libs/openlayers/css/ol.css" type="text/css" />
-    <script src="http://localhost:8080/libs/openlayers/build/ol.js" type="text/javascript"></script> -->
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" type="text/javascript"></script>
 
-    <!-- <script src="http://localhost:8080/libs/jquery/jquery-3.4.1.min.js" type="text/javascript"></script> -->
     <!-- Thư viện làm giao diện -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -161,7 +158,7 @@
 
 <body onload="initialize_map();">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <!-- Brand -->
+        <!-- Tên  -->
         <a class="navbar-brand" href="baitapcuoiky.php">Trường Đại học Thủy Lợi</a>
     </nav>
     <h2 style="margin-left:250px"><span style="color:pink">Các khu bảo tồn Việt Nam Web Map Service in GeoServer</span></h2>
@@ -278,9 +275,7 @@
         var cenY = (minY + maxY) / 2;
         var mapLat = cenY;
         var mapLng = cenX;
-        var mapDefaultZoom = 5;
-
-
+        var mapDefaultZoom = 6;
 
 
         function initialize_map() {
@@ -294,6 +289,7 @@
             var layerCMR_adm1 = new ol.layer.Image({
                 source: new ol.source.ImageWMS({
                     ratio: 1,
+                    //sửa theo localhost
                     url: 'http://localhost:8080/geoserver/GIS/wms?',
                     params: {
                         'FORMAT': format,
@@ -309,7 +305,7 @@
             var content = document.getElementById('popup-content');
             var closer = document.getElementById('popup-closer');
 
-            //tao ra layer hien len
+            //popup dữ liệu
             var overlay = new ol.Overlay({
                 element: container,
                 autoPan: true,
