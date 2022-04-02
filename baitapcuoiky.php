@@ -179,7 +179,6 @@
         <form>
             <input id="nhap" type="text" name="nhap" placeholder="Nhập tên khu bảo tồn..">
             <input id="bttk" type="button" value="Search"></input>
-
         </form>
     </div>
     <div id="coordsOn" class="coordcss"></div>
