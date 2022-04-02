@@ -297,7 +297,8 @@ function getInfoCMRToAjax($paPDO, $paSRID, $paPoint)
     $paPoint = str_replace(',', ' ', $paPoint);
     //$mySQLStr = "SELECT ST_AsGeoJson(geom) as geo from \"CMR_adm1\" where ST_Within('SRID=4326;POINT(12 5)'::geometry,geom)";
     //$mySQLStr = "SELECT ST_AsGeoJson(geom) as geo from \"CMR_adm1\" where ST_Within('SRID=".$paSRID.";".$paPoint."'::geometry,geom)";
-    $mySQLStr = "SELECT ten, kieu_bt, cap_bt, nam_dexuat, ST_Area(ST_Transform(geom, 26986))/1000000 as dientich from \"khu_bao_ton\" where ST_Within('SRID=" . $paSRID . ";" . $paPoint . "'::geometry,geom)";
+    //26918 là công thức
+    $mySQLStr = "SELECT ten, kieu_bt, cap_bt, nam_dexuat, ST_Area(ST_Transform(geom, 26918))/1000000 as dientich from \"khu_bao_ton\" where ST_Within('SRID=" . $paSRID . ";" . $paPoint . "'::geometry,geom)";
     $result = query($paPDO, $mySQLStr);
 
     if ($result != null) {
