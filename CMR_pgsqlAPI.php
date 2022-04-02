@@ -65,62 +65,6 @@ function closeDB($paPDO)
     // Ngắt kết nối
     $paPDO = null;
 }
-function example1($paPDO)
-{
-    $mySQLStr = "SELECT * FROM \"khu_bao_ton\"";
-    $result = query($paPDO, $mySQLStr);
-
-    if ($result != null) {
-        // Lặp kết quả
-        foreach ($result as $item) {
-            echo $item['ten'] . ' - ' . $item['kieu_bt'];
-            echo "<br>";
-        }
-    } else {
-        echo "example1 - null";
-        echo "<br>";
-    }
-}
-function example2($paPDO)
-{
-    $mySQLStr = "SELECT ST_AsGeoJson(geom) as geo from \"khu_bao_ton\"";
-    $result = query($paPDO, $mySQLStr);
-
-    if ($result != null) {
-        // Lặp kết quả
-        foreach ($result as $item) {
-            echo $item['geo'];
-            echo "<br><br>";
-        }
-    } else {
-        echo "example2 - null";
-        echo "<br>";
-    }
-}
-function example3($paPDO, $paSRID, $paPoint)
-{
-    echo $paPoint;
-    echo "<br>";
-    $paPoint = str_replace(',', ' ', $paPoint);
-    echo $paPoint;
-    echo "<br>";
-    //$mySQLStr = "SELECT ST_AsGeoJson(geom) as geo from \"CMR_adm1\" where ST_Within('SRID=4326;POINT(12 5)'::geometry,geom)";
-    $mySQLStr = "SELECT ST_AsGeoJson(geom) as geo from \"khu_bao_ton\" where ST_Within('SRID=" . $paSRID . ";" . $paPoint . "'::geometry,geom)";
-    echo $mySQLStr;
-    echo "<br><br>";
-    $result = query($paPDO, $mySQLStr);
-
-    if ($result != null) {
-        // Lặp kết quả
-        foreach ($result as $item) {
-            echo $item['geo'];
-            echo "<br><br>";
-        }
-    } else {
-        echo "example2 - null";
-        echo "<br>";
-    }
-}
 
 function getResult($paPDO, $paSRID, $paPoint)
 {
@@ -167,15 +111,8 @@ function getGeoCMRToAjax($paPDO, $paSRID, $paPoint)
 
 function getkieubaoton($paPDO, $paSRID, $paPoint, $kieu)
 {
-    //echo $paPoint;
-    //echo "<br>";
     $paPoint = str_replace(',', ' ', $paPoint);
-    //echo $paPoint;
-    //echo "<br>";
-    //$mySQLStr = "SELECT ST_AsGeoJson(geom) as geo from \"CMR_adm1\" where ST_Within('SRID=4326;POINT(12 5)'::geometry,geom)";
     // $mySQLStr = "SELECT ST_AsGeoJson(geom) as geo from \"khu_bao_ton\" where ST_Within('SRID=" . $paSRID . ";" . $paPoint . "'::geometry,geom)";
-    // //echo $mySQLStr;
-    // //echo "<br><br>";
     // $result = query($paPDO, $mySQLStr);
     if ($kieu == 1) {
         $mySQLStr = "SELECT ST_AsGeoJson(geom) as geo from \"khu_bao_ton\" where kieu_bt = 'Vườn quốc gia'";
@@ -270,8 +207,6 @@ function getkieubaoton6($paPDO, $paSRID, $paPoint, $kieu)
     return str_replace('}"', '}', str_replace('"{', '{', str_replace('\\', '', json_encode($mang))));
 }
 
-
-
 function timkiembaoton($paPDO, $paSRID, $paPoint, $input)
 {
 // return $input;
@@ -288,14 +223,9 @@ function timkiembaoton($paPDO, $paSRID, $paPoint, $input)
         return "null";
 }
 
-
-
-
-
 function getInfoCMRToAjax($paPDO, $paSRID, $paPoint)
 {
     $paPoint = str_replace(',', ' ', $paPoint);
-    //$mySQLStr = "SELECT ST_AsGeoJson(geom) as geo from \"CMR_adm1\" where ST_Within('SRID=4326;POINT(12 5)'::geometry,geom)";
     //$mySQLStr = "SELECT ST_AsGeoJson(geom) as geo from \"CMR_adm1\" where ST_Within('SRID=".$paSRID.";".$paPoint."'::geometry,geom)";
     //https://postgis.net/workshops/postgis-intro/projection.html
     //26918 là công thức
