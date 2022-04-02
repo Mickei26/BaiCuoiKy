@@ -192,18 +192,6 @@
             <div class="row">
 
                 <!-- Grid column -->
-                <div class="col-md-6 mt-md-0 mt-3">
-
-                    <!-- Content -->
-                    <h5 class="text-uppercase">Hệ thống thông tin địa lý</h5>
-                    <p>Bài tập lớn cuối kỳ Nhóm 8 .Các khu bảo tồn Việt Nam Web Map Service in GeoServer</p>
-
-                </div>
-                <!-- Grid column -->
-
-                <hr class="clearfix w-100 d-md-none pb-3">
-
-                <!-- Grid column -->
                 <div class="col-md-3 mb-md-0 mb-3">
 
                     <!-- Links -->
@@ -274,27 +262,39 @@
         var cenY = (minY + maxY) / 2;
         var mapLat = cenY;
         var mapLng = cenX;
-        var mapDefaultZoom = 6;
+        var mapDefaultZoom = 7;
 
 
         function initialize_map() {
-            //*
             layerBG = new ol.layer.Tile({
                 source: new ol.source.OSM({
-
                 })
             });
-            //*/
+
             var layerCMR_adm1 = new ol.layer.Image({
                 source: new ol.source.ImageWMS({
                     ratio: 1,
                     //sửa theo localhost
-                    url: 'http://localhost:8080/geoserver/GIS/wms?',
+                    url: 'http://localhost:8080/geoserver/example/wms?',
                     params: {
                         'FORMAT': format,
                         'VERSION': '1.1.1',
                         STYLES: '',
                         LAYERS: 'khu_bao_ton',
+                    }
+                })
+            });
+
+            var layerGadm40_vnm_2 = new ol.layer.Image({
+                source: new ol.source.ImageWMS({
+                    ratio: 1,
+                    //sửa theo localhost
+                    url: 'http://localhost:8080/geoserver/example/wms?',
+                    params: {
+                        'FORMAT': format,
+                        'VERSION': '1.1.1',
+                        STYLES: '',
+                        LAYERS: ' gadm40_vnm_2',
                     }
                 })
             });
@@ -322,12 +322,12 @@
                 target: "map",
                 overlays: [overlay],
                 // layer nền và layer bài làm
-                layers: [layerBG, layerCMR_adm1],
-
-                //layers: [layerCMR_adm1],
+                layers: [layerBG, layerGadm40_vnm_2],
+                // layers: [layerBG, layerGadm40_vnm_2],
+                // layers: [layerBG],
                 view: viewMap
             });
-            //map.getView().fit(bounds, map.getSize());
+            // map.getView().fit(bounds, map.getSize());
 
             //popup 
             closer.onclick = function() {
@@ -383,17 +383,6 @@
                 });
             });
 
-
-
-
-
-
-
-
-
-
-
-
             //set mau cho tung vung
             var kieu1 = {
                 'MultiPolygon': new ol.style.Style({
@@ -414,8 +403,6 @@
                 style: styleFunction1
             });
             map.addLayer(vectorLayer);
-
-
 
             var kieu2 = {
                 'MultiPolygon': new ol.style.Style({
@@ -524,13 +511,6 @@
             });
             map.addLayer(vectorLayer6);
 
-
-
-
-
-
-
-
             //chuc nang tao doi tuong de luu tru du lieu
             function createJsonObj(myJSON) {
                 var geojsonObject = '{' +
@@ -549,10 +529,8 @@
                         '},'
                 };
                 geojsonObject = geojsonObject.slice(0, -1)
-                // console.log(geojsonObject)
                 geojsonObject += ']' +
                     '}';
-                // console.log(geojsonObject)
                 return geojsonObject;
             }
             //chuc nang ve ra doi tuong 
@@ -571,16 +549,8 @@
             }
             //display thong tin cua hinh
             function displayObjInfo(result, coordinate) {
-                // alert("result: " + result);
-                // alert("coordinate des: " + coordinate);
                 $("#info").html(result);
             }
-
-
-
-
-
-
 
             // styles cho viền
             var kieu7 = {
@@ -610,7 +580,7 @@
                 });
                 vectorLayer7.setSource(vectorSource);
             }
-            //hightlightsdfsdfsdfsdfsdfsd
+            //hightlight
             function highLightObj7(result) {
                 var objJson = JSON.parse(result);
                 var strObjJson = createJsonObj(objJson);
@@ -618,14 +588,10 @@
             }
 
             map.on('singleclick', function(evt) {
-                //alert("coordinate: " + evt.coordinate);
-                //var myPoint = 'POINT(12,5)';
                 var lonlat = ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
                 var lon = lonlat[0];
                 var lat = lonlat[1];
                 var myPoint = 'POINT(' + lon + ' ' + lat + ')';
-                //alert("myPoint: " + myPoint);
-                //*
                 $.ajax({
                     type: "POST",
                     url: "CMR_pgsqlAPI.php",
@@ -642,14 +608,6 @@
                     }
                 });
             });
-
-
-
-
-
-
-
-
 
             //to mau map
             function highLightGeoJsonObj1(paObjJson) {
@@ -668,8 +626,6 @@
                 highLightGeoJsonObj1(strObjJson);
             }
 
-
-
             function highLightGeoJsonObj2(paObjJson) {
                 var vectorSource = new ol.source.Vector({
                     features: (new ol.format.GeoJSON()).readFeatures(paObjJson, {
@@ -685,9 +641,6 @@
                 var strObjJson = createJsonObj(objJson);
                 highLightGeoJsonObj2(strObjJson);
             }
-
-
-
 
             function highLightGeoJsonObj3(paObjJson) {
                 var vectorSource = new ol.source.Vector({
@@ -705,9 +658,6 @@
                 highLightGeoJsonObj3(strObjJson);
             }
 
-
-
-
             function highLightGeoJsonObj4(paObjJson) {
                 var vectorSource = new ol.source.Vector({
                     features: (new ol.format.GeoJSON()).readFeatures(paObjJson, {
@@ -723,9 +673,6 @@
                 var strObjJson = createJsonObj(objJson);
                 highLightGeoJsonObj4(strObjJson);
             }
-
-
-
 
             function highLightGeoJsonObj5(paObjJson) {
                 var vectorSource = new ol.source.Vector({
@@ -743,8 +690,6 @@
                 highLightGeoJsonObj5(strObjJson);
             }
 
-
-
             function highLightGeoJsonObj6(paObjJson) {
                 var vectorSource = new ol.source.Vector({
                     features: (new ol.format.GeoJSON()).readFeatures(paObjJson, {
@@ -760,18 +705,6 @@
                 var strObjJson = createJsonObj(objJson);
                 highLightGeoJsonObj6(strObjJson);
             }
-
-
-
-
-
-
-
-
-
-
-
-
 
             map.once('postrender', function(evt) {
 
@@ -879,8 +812,6 @@
                     }
                 });
             });
-
-
 
             map.on('pointermove', function(evt) {
                 console.info(evt.pixel);
