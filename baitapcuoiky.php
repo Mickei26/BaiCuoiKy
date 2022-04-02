@@ -56,9 +56,9 @@
             position: relative;
             text-align: center;
             color: black;
-            margin-bottom:1px;
-             margin-left:20px;
-             margin-right: 20px;
+            margin-bottom: 1px;
+            margin-left: 20px;
+            margin-right: 20px;
         }
 
         .table {
@@ -106,7 +106,7 @@
             left: 48px;
             margin-left: -10px;
         }
-        
+
         .search-container {
             position: relative;
             padding: 0px 10px;
@@ -138,41 +138,32 @@
         .ol-popup-closer:after {
             content: "✖";
         }
+
         .page-footer {
-            margin-left :800px; 
+            margin-left: 800px;
             background-color: #4c4c4c;
             width: 700px;
             /* height: 200px; */
-            color:papayawhip;
-            position:relative;
-            bottom:0px;
+            color: papayawhip;
+            position: relative;
+            bottom: 0px;
             margin-bottom: 1px;
             margin-top: 97px;
-        
+
         }
-        .footer-copyright{
-            background-color:#333333;
-            color:aliceblue;
+
+        .footer-copyright {
+            background-color: #333333;
+            color: aliceblue;
         }
     </style>
 </head>
 
 <body onload="initialize_map();">
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <!-- Brand -->
-  <a class="navbar-brand" href="#">Trường Đại học Thủy Lợi</a>
-
-  <!-- Links -->
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="#">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Page</a>
-    </li>
-    
-  </ul>
-</nav>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <!-- Brand -->
+        <a class="navbar-brand" href="baitapcuoiky.php">Trường Đại học Thủy Lợi</a>
+    </nav>
     <h2 style="margin-left:250px"><span style="color:pink">Các khu bảo tồn Việt Nam Web Map Service in GeoServer</span></h2>
     <!-- day la table du lieu -->
     <div id="map" class="map"></div>
@@ -181,7 +172,7 @@
         <a href="#" id="popup-closer" class="ol-popup-closer"></a>
         <div id="popup-content"> </div>
     </div>
-    
+
     <!-- anh chu thich -->
     <h3>
         Khu vực bảo tồn tương ứng với màu
@@ -190,85 +181,85 @@
     <div class="search-container">
         <form>
             <input id="nhap" type="text" name="nhap" placeholder="Nhập tên khu bảo tồn..">
-            <input id="bttk" type="button"  value="Search"></input>
-            
+            <input id="bttk" type="button" value="Search"></input>
+
         </form>
     </div>
     <div id="coordsOn" class="coordcss"></div>
-        <!-- Footer -->
-<footer class="page-footer font-small blue pt-4">
+    <!-- Footer -->
+    <footer class="page-footer font-small blue pt-4">
 
-<!-- Footer Links -->
-<div class="container-fluid text-center text-md-left">
+        <!-- Footer Links -->
+        <div class="container-fluid text-center text-md-left">
 
-  <!-- Grid row -->
-  <div class="row">
+            <!-- Grid row -->
+            <div class="row">
 
-    <!-- Grid column -->
-    <div class="col-md-6 mt-md-0 mt-3">
+                <!-- Grid column -->
+                <div class="col-md-6 mt-md-0 mt-3">
 
-      <!-- Content -->
-      <h5 class="text-uppercase">Hệ thống thông tin địa lý</h5>
-      <p>Bài tập lớn cuối kỳ Nhóm 8 .Các khu bảo tồn Việt Nam Web Map Service in GeoServer</p>
+                    <!-- Content -->
+                    <h5 class="text-uppercase">Hệ thống thông tin địa lý</h5>
+                    <p>Bài tập lớn cuối kỳ Nhóm 8 .Các khu bảo tồn Việt Nam Web Map Service in GeoServer</p>
 
-    </div>
-    <!-- Grid column -->
+                </div>
+                <!-- Grid column -->
 
-    <hr class="clearfix w-100 d-md-none pb-3">
+                <hr class="clearfix w-100 d-md-none pb-3">
 
-    <!-- Grid column -->
-    <div class="col-md-3 mb-md-0 mb-3">
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3">
 
-      <!-- Links -->
-      <h6 class="text-uppercase">Nhóm 8</h6>
+                    <!-- Links -->
+                    <h6 class="text-uppercase">Nhóm 8</h6>
 
-      <ul class="list-unstyled">
-        <li>
-          <h7>Trịnh Văn Phúc</h7>
-        </li>
-        <li>
-          <h7>Vũ Quốc Huy</h7>
-        </li>
-        <li>
-           <h7>Đàm Khôi Nguyên</h7>
-        </li>
-      </ul>
+                    <ul class="list-unstyled">
+                        <li>
+                            <h7>Trịnh Văn Phúc</h7>
+                        </li>
+                        <li>
+                            <h7>Vũ Quốc Huy</h7>
+                        </li>
+                        <li>
+                            <h7>Đàm Khôi Nguyên</h7>
+                        </li>
+                    </ul>
 
-    </div>
-    <!-- Grid column -->
-    
-    <!-- Grid column -->
-    <div class="col-md-3 mb-md-0 mb-3">
+                </div>
+                <!-- Grid column -->
 
-      <!-- Links -->
-      <h6 class="text-uppercase">___MSV___</h6>
-      <ul class="list-unstyled">
-        <li>
-          <h7>1851171738</h7>
-        </li>
-        <li>
-          <h7>1851171442</h7>
-        </li>
-        <li>
-            <h7>1851171686</h7>
-        </li>
-      </ul>
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3">
 
-    </div>
-    <!-- Grid column -->
-  </div>
-  <!-- Grid row -->
+                    <!-- Links -->
+                    <h6 class="text-uppercase">___MSV___</h6>
+                    <ul class="list-unstyled">
+                        <li>
+                            <h7>1851171738</h7>
+                        </li>
+                        <li>
+                            <h7>1851171442</h7>
+                        </li>
+                        <li>
+                            <h7>1851171686</h7>
+                        </li>
+                    </ul>
 
-</div>
-<!-- Footer Links -->
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
 
-<!-- Copyright -->
-<div class="footer-copyright text-center py-3">© 2022 Copyright: Nhóm 8 - 60PM1-2
-</div>
-<!-- Copyright -->
+        </div>
+        <!-- Footer Links -->
 
-</footer>
-<!-- Footer -->
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2022 Copyright: Nhóm 8 - 60PM1-2
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
 
 
 
@@ -291,7 +282,7 @@
 
 
 
-        
+
         function initialize_map() {
             //*
             layerBG = new ol.layer.Tile({
@@ -379,27 +370,27 @@
 
             document.getElementById("bttk").addEventListener('click', function(evt) {
                 var myinput = document.getElementById("nhap").value;
-               
-            // console.log(myinput)
-            $.ajax({
-                type: "POST",
-                url: "CMR_pgsqlAPI.php",
-                data: { 
-                    functionname: 'timkiembaoton',
-                    input : myinput ,
-                },
-                success: function(result, status, erro) {
-                    highLightObj7(result);
-                },
-                error: function(req, status, error) {
-                    alert(req + " " + status + " " + error);
-                }
+
+                // console.log(myinput)
+                $.ajax({
+                    type: "POST",
+                    url: "CMR_pgsqlAPI.php",
+                    data: {
+                        functionname: 'timkiembaoton',
+                        input: myinput,
+                    },
+                    success: function(result, status, erro) {
+                        highLightObj7(result);
+                    },
+                    error: function(req, status, error) {
+                        alert(req + " " + status + " " + error);
+                    }
+                });
             });
-            });
 
 
 
-            
+
 
 
 
@@ -952,7 +943,7 @@
 
         // });
     </script>
-  
+
 </body>
 
 </html>
