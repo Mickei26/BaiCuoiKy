@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title> Bài Cuối kì</title>
+    <title>Bài Cuối Kỳ</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <!-- add thu vien API  -->
+    <!-- Thư viện API  -->
     <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css" />
     <script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript"></script>
 
@@ -18,18 +18,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-
-    <!-- Chinh style css cho map -->
+    <!-- CSS -->
     <style>
-        /*
-            .map, .righ-panel {
-                height: 500px;
-                width: 80%;
-                float: left;
-            }
-            */
-
-
         .map,
         .right-panel {
             height: 100vh;
@@ -37,15 +27,9 @@
             float: left;
         }
 
-        /* .bottom-right {
-            position: absolute;
-            bottom: auto;
-            right: auto;
-        } */
-
         .img2 {
             width: auto;
-            height: 270px;
+            height: 320px;
         }
 
         .map {
@@ -71,8 +55,6 @@
             margin-left: 600px;
             margin-top: 20px;
         }
-
-
 
         .ol-popup {
             position: absolute;
@@ -109,13 +91,10 @@
             padding: 0px 10px;
             margin-top: 20px;
             margin-left: 600px;
-            /* margin-right: 100px; */
-            /* right: 350px; */
             background: transparent;
-            font-size: 17px;
+            font-size: 24px;
             border: none;
             cursor: pointer;
-            /* border:1px solid red; */
         }
 
         .ol-popup:before {
@@ -137,15 +116,14 @@
         }
 
         .page-footer {
-            margin-left: 800px;
-            background-color: #4c4c4c;
+            margin-left: 750px;
+            background-color: #4d4d4d;
             width: 700px;
-            /* height: 200px; */
             color: papayawhip;
             position: relative;
             bottom: 0px;
             margin-bottom: 1px;
-            margin-top: 97px;
+            margin-top: 30px;
 
         }
 
@@ -153,28 +131,33 @@
             background-color: #333333;
             color: aliceblue;
         }
+
+        .show-hide {
+            height: 50px;
+            padding: 10px;
+            font-weight: bold;
+            background-color: #eee;
+            color: #000;
+        }
     </style>
 </head>
 
 <body onload="initialize_map();">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <!-- Tên  -->
         <a class="navbar-brand" href="baitapcuoiky.php">Trường Đại học Thủy Lợi</a>
     </nav>
-    <h2 style="margin-left:250px"><span style="color:pink">Các khu bảo tồn Việt Nam Web Map Service in GeoServer</span></h2>
-    <!-- day la table du lieu -->
+    <h2 style="text-align:center"><span style="color:red">Quản lý các khu bảo tồn ở Việt Nam</span></h2>
+    <!-- show dữ liệu trên web -->
     <div id="map" class="map"></div>
     <div id="result"></div>
     <div id="popup" class="ol-popup">
         <a href="#" id="popup-closer" class="ol-popup-closer"></a>
         <div id="popup-content"> </div>
     </div>
-
-    <!-- anh chu thich -->
     <h3>
-        Khu vực bảo tồn tương ứng với màu
+        Chú thích màu cho các khu bảo tồn
     </h3>
-    <div class="img"><img src="anh/chuthichmau2.png" class="img2"></div>
+    <div class="img"><img src="anh/chuthichmau.png" class="img2"></div>
     <div class="search-container">
         <form>
             <input id="nhap" type="text" name="nhap" placeholder="Nhập tên khu bảo tồn..">
@@ -182,21 +165,22 @@
         </form>
     </div>
     <div id="coordsOn" class="coordcss"></div>
-    <!-- Footer -->
+
+    <div class="show-hide">
+        <input id="showhide" type="button" value="Show/Hide"></input>
+
+    </div>
+
     <footer class="page-footer font-small blue pt-4">
-
-        <!-- Footer Links -->
         <div class="container-fluid text-center text-md-left">
-
-            <!-- Grid row -->
             <div class="row">
-
-                <!-- Grid column -->
+                <div class="col-md-6 mt-md-0 mt-3">
+                    <h5 class="text-uppercase">Hệ thống thông tin địa lý</h5>
+                    <p>Bài tập lớn cuối kỳ Nhóm 8 .Các khu bảo tồn Việt Nam Web Map Service in GeoServer</p>
+                </div>
+                <hr class="clearfix w-100 d-md-none pb-3">
                 <div class="col-md-3 mb-md-0 mb-3">
-
-                    <!-- Links -->
                     <h6 class="text-uppercase">Nhóm 8</h6>
-
                     <ul class="list-unstyled">
                         <li>
                             <h7>Trịnh Văn Phúc</h7>
@@ -210,12 +194,7 @@
                     </ul>
 
                 </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
                 <div class="col-md-3 mb-md-0 mb-3">
-
-                    <!-- Links -->
                     <h6 class="text-uppercase">___MSV___</h6>
                     <ul class="list-unstyled">
                         <li>
@@ -228,30 +207,17 @@
                             <h7>1851171686</h7>
                         </li>
                     </ul>
-
                 </div>
-                <!-- Grid column -->
             </div>
-            <!-- Grid row -->
-
         </div>
-        <!-- Footer Links -->
-
-        <!-- Copyright -->
         <div class="footer-copyright text-center py-3">© 2022 Copyright: Nhóm 8 - 60PM1-2
         </div>
-        <!-- Copyright -->
-
     </footer>
-    <!-- Footer -->
 
-
-
-
-    <!-- ket noi voi xu ly  -->
+    <!-- kết nối dữ liệu -->
     <?php include 'CMR_pgsqlAPI.php' ?>
     <script>
-        // $("#document").ready(function () {
+        // Tạo vị trí hiển thị map 
         var format = 'image/png';
         var map;
         var minX = 102.15218353271484;
@@ -262,19 +228,20 @@
         var cenY = (minY + maxY) / 2;
         var mapLat = cenY;
         var mapLng = cenX;
-        var mapDefaultZoom = 7;
+        var mapDefaultZoom = 6;
 
-
+        // khởi tạo map
         function initialize_map() {
+            // openstreetmap
             layerBG = new ol.layer.Tile({
                 source: new ol.source.OSM({})
             });
-
-            var layerCMR_adm1 = new ol.layer.Image({
+            // khu bảo tồn
+            var layerkbt = new ol.layer.Image({
                 source: new ol.source.ImageWMS({
                     ratio: 1,
                     //sửa theo localhost
-                    url: 'http://localhost:8080/geoserver/example/wms?',
+                    url: 'http://localhost:8080/geoserver/example/wms??',
                     params: {
                         'FORMAT': format,
                         'VERSION': '1.1.1',
@@ -284,26 +251,12 @@
                 })
             });
 
-            var layerGadm40_vnm_2 = new ol.layer.Image({
-                source: new ol.source.ImageWMS({
-                    ratio: 1,
-                    //sửa theo localhost
-                    url: 'http://localhost:8080/geoserver/example/wms?',
-                    params: {
-                        'FORMAT': format,
-                        'VERSION': '1.1.1',
-                        STYLES: '',
-                        LAYERS: ' gadm40_vnm_2',
-                    }
-                })
-            });
-
-            //tao cac tinh nang overlayer
+            //khởi tạo tính năng overlayer
             var container = document.getElementById('popup');
             var content = document.getElementById('popup-content');
             var closer = document.getElementById('popup-closer');
 
-            //popup dữ liệu
+            //hiển thị dữ liệu
             var overlay = new ol.Overlay({
                 element: container,
                 autoPan: true,
@@ -311,24 +264,23 @@
                     duration: 250
                 }
             });
+
             // hàm viewmap 
             var viewMap = new ol.View({
                 center: ol.proj.fromLonLat([mapLng, mapLat]),
                 zoom: mapDefaultZoom
-                //projection: projection
             });
+
             map = new ol.Map({
                 target: "map",
                 overlays: [overlay],
                 // layer nền và layer bài làm
-                layers: [layerBG, layerCMR_adm1],
-                // layers: [layerBG, layerGadm40_vnm_2],
-                // layers: [layerBG],
+                layers: [layerBG, layerkbt],
                 view: viewMap
             });
-            // map.getView().fit(bounds, map.getSize());
+            //map.getView().fit(bounds, map.getSize());
 
-            //popup 
+            //lấy dữ liệu để hiển thị thông tin trên popup
             closer.onclick = function() {
                 overlay.setPosition(undefined);
                 closer.blur();
@@ -344,7 +296,6 @@
                 $.ajax({
                     type: "POST",
                     url: "CMR_pgsqlAPI.php",
-
                     data: {
                         functionname: 'getInfoCMRToAjax',
                         paPoint: myPoint
@@ -356,16 +307,13 @@
                         alert(req + " " + status + " " + error);
                     }
                 });
-                // document.getElementById('coords').innerHTML = myPoint;
                 content.innerHTML = '<div class= "table" id ="info" ></div>' + toado;
                 overlay.setPosition(coordinate);
             });
 
-
+            //gọi hàm tìm kiếm
             document.getElementById("bttk").addEventListener('click', function(evt) {
                 var myinput = document.getElementById("nhap").value;
-
-                // console.log(myinput)
                 $.ajax({
                     type: "POST",
                     url: "CMR_pgsqlAPI.php",
@@ -382,13 +330,17 @@
                 });
             });
 
-            //set mau cho tung vung
+            //Gán màu cho từng kiểu bảo tồn
+
+            // Vườn quốc gia
             var kieu1 = {
                 'MultiPolygon': new ol.style.Style({
                     fill: new ol.style.Fill({
-                        color: '#99FF33'
+                        // đổ màu xanh ngọc
+                        color: '#4ddde0'
                     }),
                     stroke: new ol.style.Stroke({
+                        // đổ màu viền đen cho vùng
                         color: 'black',
                         width: 1
                     })
@@ -398,17 +350,20 @@
                 return kieu1[feature.getGeometry().getType()];
             };
             var vectorLayer = new ol.layer.Vector({
-                //source: vectorSource,
                 style: styleFunction1
             });
+            // thêm layer vào map 
             map.addLayer(vectorLayer);
 
+            // Khu bảo tồn thiên nhiên
             var kieu2 = {
                 'MultiPolygon': new ol.style.Style({
                     fill: new ol.style.Fill({
-                        color: '#009900'
+                        // đổ màu xanh lá nhạt 
+                        color: '#48b269'
                     }),
                     stroke: new ol.style.Stroke({
+                        // đổ màu viền đen cho vùng
                         color: 'black',
                         width: 1
                     })
@@ -417,19 +372,21 @@
             var styleFunction2 = function(feature) {
                 return kieu2[feature.getGeometry().getType()];
             };
-
             var vectorLayer2 = new ol.layer.Vector({
-                //source: vectorSource,
                 style: styleFunction2
             });
+            // thêm layer vào map 
             map.addLayer(vectorLayer2);
 
+            // Loài và sinh cảnh
             var kieu3 = {
                 'MultiPolygon': new ol.style.Style({
                     fill: new ol.style.Fill({
-                        color: '#663333'
+                        // đổ màu đỏ
+                        color: '#d4173f'
                     }),
                     stroke: new ol.style.Stroke({
+                        // đổ màu viền đen cho vùng
                         color: 'black',
                         width: 1
                     })
@@ -438,20 +395,21 @@
             var styleFunction3 = function(feature) {
                 return kieu3[feature.getGeometry().getType()];
             };
-
             var vectorLayer3 = new ol.layer.Vector({
-                //source: vectorSource,
                 style: styleFunction3
             });
+            //thêm layer vào map 
             map.addLayer(vectorLayer3);
 
-
+            // Rừng đặc dụng
             var kieu4 = {
                 'MultiPolygon': new ol.style.Style({
                     fill: new ol.style.Fill({
-                        color: '#BC781F'
+                        // đổ màu xanh lá đậm
+                        color: '#0c6b1e'
                     }),
                     stroke: new ol.style.Stroke({
+                        // đổ màu viền đen cho vùng
                         color: 'black',
                         width: 1
                     })
@@ -460,20 +418,21 @@
             var styleFunction4 = function(feature) {
                 return kieu4[feature.getGeometry().getType()];
             };
-
             var vectorLayer4 = new ol.layer.Vector({
-                //source: vectorSource,
                 style: styleFunction4
             });
+            // thêm layer vào map 
             map.addLayer(vectorLayer4);
 
-
+            // Vùng đất ngập nước
             var kieu5 = {
                 'MultiPolygon': new ol.style.Style({
                     fill: new ol.style.Fill({
-                        color: '#33CCFF'
+                        // đổ màu hồng 
+                        color: '#ffcccc'
                     }),
                     stroke: new ol.style.Stroke({
+                        // đổ màu viền đen cho vùng
                         color: 'black',
                         width: 1
                     })
@@ -482,20 +441,22 @@
             var styleFunction5 = function(feature) {
                 return kieu5[feature.getGeometry().getType()];
             };
-
             var vectorLayer5 = new ol.layer.Vector({
                 //source: vectorSource,
                 style: styleFunction5
             });
+            //thêm layer vào map 
             map.addLayer(vectorLayer5);
 
-
+            // khu bảo vệ cảnh quan 
             var kieu6 = {
                 'MultiPolygon': new ol.style.Style({
                     fill: new ol.style.Fill({
-                        color: '#FFFF33'
+                        // đổ màu xanh xanh nước biển đậm
+                        color: '#004390'
                     }),
                     stroke: new ol.style.Stroke({
+                        // đổ màu viền đen cho vùng
                         color: 'black',
                         width: 1
                     })
@@ -505,12 +466,12 @@
                 return kieu6[feature.getGeometry().getType()];
             };
             var vectorLayer6 = new ol.layer.Vector({
-                //source: vectorSource,
                 style: styleFunction6
             });
+            //thêm layer vào map 
             map.addLayer(vectorLayer6);
 
-            //chuc nang tao doi tuong de luu tru du lieu
+            //hàm để tạo đối tượng lưu dữ liệu 
             function createJsonObj(myJSON) {
                 var geojsonObject = '{' +
                     '"type": "FeatureCollection",' +
@@ -532,7 +493,8 @@
                     '}';
                 return geojsonObject;
             }
-            //chuc nang ve ra doi tuong 
+
+            //hàm vẽ đối tượng 
             function drawGeoJsonObj(paObjJson) {
                 var vectorSource = new ol.source.Vector({
                     features: (new ol.format.GeoJSON()).readFeatures(paObjJson, {
@@ -546,15 +508,15 @@
                 });
                 map.addLayer(vectorLayer);
             }
-            //display thong tin cua hinh
+
+            //hiển thị thông tin của hình
             function displayObjInfo(result, coordinate) {
                 $("#info").html(result);
             }
 
-            // styles cho viền
+            // đổ màu đỏ cho viền khu được chọn 
             var kieu7 = {
                 'MultiPolygon': new ol.style.Style({
-
                     stroke: new ol.style.Stroke({
                         color: 'red',
                         width: 3
@@ -565,11 +527,12 @@
                 return kieu7[feature.getGeometry().getType()];
             };
             var vectorLayer7 = new ol.layer.Vector({
-                //source: vectorSource,
                 style: styleFunction7
             });
+            // thêm viền vào trong map
             map.addLayer(vectorLayer7);
-            //to mau map
+
+            //tô màu map
             function highLightGeoJsonObj7(paObjJson) {
                 var vectorSource = new ol.source.Vector({
                     features: (new ol.format.GeoJSON()).readFeatures(paObjJson, {
@@ -585,7 +548,6 @@
                 var strObjJson = createJsonObj(objJson);
                 highLightGeoJsonObj7(strObjJson);
             }
-
             map.on('singleclick', function(evt) {
                 var lonlat = ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
                 var lon = lonlat[0];
@@ -594,7 +556,6 @@
                 $.ajax({
                     type: "POST",
                     url: "CMR_pgsqlAPI.php",
-                    //dataType: 'json',
                     data: {
                         functionname: 'getGeoCMRToAjax',
                         paPoint: myPoint
@@ -608,7 +569,7 @@
                 });
             });
 
-            //to mau map
+            //hightlight của từng khu 
             function highLightGeoJsonObj1(paObjJson) {
                 var vectorSource = new ol.source.Vector({
                     features: (new ol.format.GeoJSON()).readFeatures(paObjJson, {
@@ -705,27 +666,16 @@
                 highLightGeoJsonObj6(strObjJson);
             }
 
+            //truy vấn để lấy màu map bên API
             map.once('postrender', function(evt) {
-
-                //alert("coordinate: " + evt.coordinate);
-                //var myPoint = 'POINT(12,5)';
-                // var lonlat = ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
-                // var lon = lonlat[0];
-                // var lat = lonlat[1];
-                // var myPoint = 'POINT(' + lon + ',' + lat + ')';
-                //alert("myPoint: " + myPoint);
-                //*
-                // console.log("test")
                 $.ajax({
                     type: "POST",
                     url: "CMR_pgsqlAPI.php",
-                    //dataType: 'json',
                     data: {
                         functionname: 'getkieubaoton',
                     },
                     success: function(result, status, erro) {
                         highLightObj1(result);
-                        // console.log(result);
                     },
                     error: function(req, status, error) {
                         alert(req + " " + status + " " + error);
@@ -734,7 +684,6 @@
                 $.ajax({
                     type: "POST",
                     url: "CMR_pgsqlAPI.php",
-                    //dataType: 'json',
                     data: {
                         functionname: 'getkieubaoton2',
 
@@ -750,7 +699,6 @@
                 $.ajax({
                     type: "POST",
                     url: "CMR_pgsqlAPI.php",
-                    //dataType: 'json',
                     data: {
                         functionname: 'getkieubaoton3',
 
@@ -766,7 +714,6 @@
                 $.ajax({
                     type: "POST",
                     url: "CMR_pgsqlAPI.php",
-                    //dataType: 'json',
                     data: {
                         functionname: 'getkieubaoton4',
 
@@ -782,7 +729,6 @@
                 $.ajax({
                     type: "POST",
                     url: "CMR_pgsqlAPI.php",
-                    //dataType: 'json',
                     data: {
                         functionname: 'getkieubaoton5',
 
@@ -798,7 +744,6 @@
                 $.ajax({
                     type: "POST",
                     url: "CMR_pgsqlAPI.php",
-                    //dataType: 'json',
                     data: {
                         functionname: 'getkieubaoton6',
                     },
@@ -812,6 +757,7 @@
                 });
             });
 
+            // di chuyển chuột để hiển thị kinh độ vĩ độ
             map.on('pointermove', function(evt) {
                 console.info(evt.pixel);
                 console.info(map.getPixelFromCoordinate(evt.coordinate));
@@ -822,53 +768,8 @@
                 var myPoint = ' Kinh độ: ' + lon + '-' + 'Vĩ độ: ' + lat + '';
                 document.getElementById('coordsOn').innerHTML = myPoint;
             });
-
-
-            // map.on('click', function(evt) {
-            //     console.info(evt.pixel);
-            //     console.info(map.getPixelFromCoordinate(evt.coordinate));
-            //     console.info(ol.proj.toLonLat(evt.coordinate));
-            //     var coords = ol.proj.toLonLat(evt.coordinate);
-            //     var lat = coords[1];
-            //     var lon = coords[0];
-            //     var myPoint = '' + lat + '  ' + lon + '';
-            //     document.getElementById('coords').innerHTML = myPoint;
-            // });
-
-
-            // map.on('click', function(evt) {
-            //     // alert("coordinate org: " + evt.coordinate);
-            //     // var myPoint = 'POINT(12,5)';
-            //     var lonlat = ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
-            //     var lon = lonlat[0];
-            //     var lat = lonlat[1];
-            //     var myPoint = 'POINT(' + lon + ' ' + lat + ')';
-            //     // alert("myPoint: " + myPoint);
-            //     //*
-            //     $.ajax({
-            //         type: "POST",
-            //         url: "CMR_pgsqlAPI.php",
-            //         //dataType: 'json',
-            //         //data: {functionname: 'reponseGeoToAjax', paPoint: myPoint},
-            //         data: {
-            //             functionname: 'getInfoCMRToAjax',
-            //             paPoint: myPoint
-            //         },
-            //         success: function(result, status, erro) {
-            //             displayObjInfo(result, evt.coordinate);
-            //         },
-            //         error: function(req, status, error) {
-            //             alert(req + " " + status + " " + error);
-            //         }
-            //     });
-            //     //*/
-            // });
         };
-
-
-        // });
     </script>
-
 </body>
 
 </html>
