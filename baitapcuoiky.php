@@ -142,6 +142,7 @@
     <!-- show dữ liệu trên web -->
     <div id="map" class="map"></div>
     <div id="result"></div>
+    <!-- hiển thị popup -->
     <div id="popup" class="ol-popup">
         <a href="#" id="popup-closer" class="ol-popup-closer"></a>
         <div id="popup-content"> </div>
