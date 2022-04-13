@@ -131,14 +131,6 @@
             background-color: #333333;
             color: aliceblue;
         }
-
-        .show-hide {
-            height: 50px;
-            padding: 10px;
-            font-weight: bold;
-            background-color: #eee;
-            color: #000;
-        }
     </style>
 </head>
 
@@ -165,12 +157,6 @@
         </form>
     </div>
     <div id="coordsOn" class="coordcss"></div>
-
-    <div class="show-hide">
-        <input id="showhide" type="button" value="Show/Hide"></input>
-
-    </div>
-
     <footer class="page-footer font-small blue pt-4">
         <div class="container-fluid text-center text-md-left">
             <div class="row">
