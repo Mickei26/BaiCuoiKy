@@ -331,7 +331,6 @@
             });
 
             //Gán màu cho từng kiểu bảo tồn
-
             // Vườn quốc gia
             var kieu1 = {
                 'MultiPolygon': new ol.style.Style({
