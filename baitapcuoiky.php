@@ -267,8 +267,7 @@
 
         function initialize_map() {
             layerBG = new ol.layer.Tile({
-                source: new ol.source.OSM({
-                })
+                source: new ol.source.OSM({})
             });
 
             var layerCMR_adm1 = new ol.layer.Image({
